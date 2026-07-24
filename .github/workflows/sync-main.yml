@@ -1,0 +1,30 @@
+name: Sync Develop to Main
+
+on:
+  push:
+    branches: [develop]
+
+jobs:
+  sync:
+    name: Create PR to Main
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: develop
+          base: main
+          title: "chore: sync develop to main"
+          body: |
+            Auto-generated PR to sync `develop` with `main`.
+
+            **Merged commits:**
+            ${{ github.event.head_commit.message }}
+          commit-message: "chore: sync develop to main"
+          delete-branch: false
+          labels: sync,automated
