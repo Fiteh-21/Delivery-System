@@ -52,3 +52,6 @@ Open http://localhost:5173
 | `npm run build` | Type check + production build |
 | `npm run preview` | Preview production build |
 | `npm run lint` | Run linter (oxlint) |
+| `npm run test` | Run tests in watch mode |
+| `npm run test:run` | Run tests once |
+| `npm run test:coverage` | Run tests with coverage |

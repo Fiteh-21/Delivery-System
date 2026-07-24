@@ -179,6 +179,21 @@ afterAll(() => server.close())
 | `src/test/setup.ts` | Test setup |
 | `src/test/mocks/` | Mock data |
 
+## Test Coverage
+
+| Test File | Tests | Covers |
+|---|---|---|
+| `button.test.tsx` | 10 | Variants, sizes, disabled, ref |
+| `input.test.tsx` | 7 | Types, placeholder, disabled |
+| `label.test.tsx` | 3 | Rendering, styling |
+| `card.test.tsx` | 6 | All card sub-components |
+| `LoginPage.test.tsx` | 5 | Form, validation, submit |
+| `RegisterPage.test.tsx` | 6 | Form, validation, password match |
+| `DashboardPage.test.tsx` | 5 | User info, logout |
+| `auth.test.ts` | 6 | Login, logout, profile, token |
+| `utils.test.ts` | 5 | cn() function |
+| **Total** | **53+** | |
+
 ## Running Tests
 
 ```bash
@@ -193,6 +208,9 @@ npm run test:coverage
 
 # Specific file
 npm test -- src/components/ui/button.test.tsx
+
+# By pattern
+npm test -- --testNamePattern="renders"
 ```
 
 ## Best Practices
