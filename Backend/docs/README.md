@@ -73,8 +73,13 @@ Key variables:
 │   └── api/v1.php                # Version 1 API routes
 ├── tests/
 │   ├── Feature/                  # Feature tests
-│   │   └── AuthTest.php          # Auth endpoint tests
+│   │   ├── AuthTest.php          # Auth endpoint tests (15)
+│   │   ├── ChangePasswordTest.php      # Password change (7)
+│   │   ├── EmailVerificationTest.php   # Email verification (6)
+│   │   ├── PasswordResetTest.php       # Password reset (8)
+│   │   └── RateLimitingTest.php        # Rate limiting (5)
 │   └── Unit/                     # Unit tests
+│       └── UserTest.php          # User model tests (9)
 ├── .editorconfig                 # Editor formatting rules
 ├── .env.example                  # Environment variable template
 ├── .gitignore                    # Git ignore rules
