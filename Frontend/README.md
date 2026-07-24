@@ -1,32 +1,63 @@
-# React + TypeScript + Vite
+# Delivery System - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+React SPA for the Delivery System backend API.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+| Tool | Purpose |
+|---|---|
+| React 19 | UI library |
+| TypeScript | Type safety |
+| Vite 8 | Build tool + dev server |
+| Tailwind CSS 4 | Styling |
+| shadcn/ui | UI components |
+| Zustand | State management |
+| React Query | Server state |
+| React Router | Routing |
+| React Hook Form | Forms |
+| Zod | Validation |
+| Axios | HTTP client |
 
-## React Compiler
+## Quick Start
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Open http://localhost:5173
+
+## Commands
+
+| Command | Description |
+|---|---|
+| `npm run dev` | Dev server with HMR |
+| `npm run build` | Type check + production build |
+| `npm run preview` | Preview production build |
+| `npm run lint` | Lint with oxlint |
+
+## Documentation
+
+- [Architecture](./docs/architecture.md)
+- [Project Structure](./docs/project-structure.md)
+- [Components](./docs/components.md)
+- [State Management](./docs/state-management.md)
+- [API Integration](./docs/api-integration.md)
+- [Forms & Validation](./docs/forms-validation.md)
+- [Routing](./docs/routing.md)
+- [Styling](./docs/styling.md)
+- [Testing](./docs/testing.md)
+
+## Project Structure
+
+```
+src/
+├── components/ui/    # shadcn/ui components
+├── lib/              # Utilities (api client, cn)
+├── pages/            # Route pages
+├── stores/           # Zustand stores
+├── types/            # TypeScript types
+├── App.tsx           # Routes + providers
+├── index.css         # Tailwind + theme
+└── main.tsx          # Entry point
+```
