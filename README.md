@@ -1,6 +1,6 @@
 # Delivery System
 
-A delivery management system with a Laravel backend API.
+A delivery management system with a Laravel backend API and React frontend.
 
 ## Project Structure
 
@@ -14,6 +14,14 @@ A delivery management system with a Laravel backend API.
 │   ├── scripts/       # Utility scripts
 │   ├── tests/         # PHPUnit tests
 │   └── dockerfiles/   # Docker build files
+├── Frontend/          # React + Vite SPA
+│   ├── src/           # Source code
+│   │   ├── components/# UI components
+│   │   ├── lib/       # Utilities
+│   │   ├── pages/     # Page components
+│   │   ├── stores/    # Zustand stores
+│   │   └── types/     # TypeScript types
+│   └── package.json
 └── README.md
 ```
 
@@ -50,6 +58,16 @@ php artisan serve
 
 Application: http://127.0.0.1:8000
 
+### Frontend
+
+```bash
+cd Frontend
+npm install
+npm run dev
+```
+
+Application: http://localhost:5173
+
 ## API Endpoints
 
 | Method | Endpoint | Description | Auth |
@@ -63,20 +81,38 @@ Application: http://127.0.0.1:8000
 
 ## Tech Stack
 
-- **Backend**: Laravel 12, PHP 8.2+
+### Backend
+- **Framework**: Laravel 12, PHP 8.2+
 - **Auth**: Laravel Sanctum
 - **API Versioning**: grazulex/laravel-apiroute
 - **API Docs**: dedoc/scramble
 - **CI/CD**: GitHub Actions
 - **Code Style**: Laravel Pint
 
+### Frontend
+- **Framework**: React 19 + TypeScript
+- **Build Tool**: Vite 8
+- **Styling**: Tailwind CSS 4
+- **Components**: shadcn/ui
+- **State**: Zustand
+- **Data Fetching**: TanStack React Query
+- **Forms**: React Hook Form + Zod
+- **Routing**: React Router
+
 ## Development
 
-### Run Tests
+### Run Backend Tests
 
 ```bash
 cd Backend
 php artisan test
+```
+
+### Run Frontend Dev Server
+
+```bash
+cd Frontend
+npm run dev
 ```
 
 ### Code Style
