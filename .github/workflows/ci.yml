@@ -156,6 +156,9 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Check naming conventions
+        run: bash scripts/check-naming.sh
+
   frontend-build:
     name: Frontend Build
     runs-on: ubuntu-latest

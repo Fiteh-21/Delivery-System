@@ -78,8 +78,18 @@ src/types/index.ts  (add to existing file)
 | Components | PascalCase | `UserCard.tsx` |
 | Pages | PascalCase + Page | `LoginPage.tsx` |
 | Stores | camelCase | `auth.ts` |
+| Hooks | use + PascalCase | `useAuth.ts` |
 | Types | PascalCase | `User`, `LoginRequest` |
-| Utils | camelCase | `formatDate.ts` |
+| Lib utils | camelCase | `formatDate.ts` |
 | CSS classes | kebab-case | `bg-primary` |
 | Variables | camelCase | `userName` |
 | Constants | UPPER_SNAKE | `API_BASE_URL` |
+| shadcn/ui | lowercase (don't rename) | `button.tsx` |
+
+### Verify Naming
+
+```bash
+bash scripts/check-naming.sh
+```
+
+Checks: Components, Pages, Stores, Types, Lib files, Hooks, Import paths.
