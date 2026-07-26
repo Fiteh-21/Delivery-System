@@ -9,6 +9,9 @@ class ApiResponseResource extends JsonResource
 {
     public static $wrap = null;
 
+    /**
+     * @return array{success: bool, message: string, data: mixed}
+     */
     public function toArray(Request $request): array
     {
         return [
