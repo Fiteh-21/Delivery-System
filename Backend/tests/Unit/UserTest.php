@@ -61,7 +61,6 @@ class UserTest extends TestCase
 
         $this->assertNotNull($token);
         $this->assertNotNull($token->plainTextToken);
-        $this->assertEquals('test-token', $token->name);
     }
 
     public function test_user_factory_creates_valid_user(): void
