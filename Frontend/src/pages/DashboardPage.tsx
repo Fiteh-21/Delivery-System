@@ -1,11 +1,15 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { LogOut, User } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { useAuthStore } from '@/stores/auth'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { ThemeToggle } from '@/components/ThemeToggle'
+import { LanguageSwitcher } from '@/components/LanguageSwitcher'
 
 export default function DashboardPage() {
+  const { t } = useTranslation()
   const navigate = useNavigate()
   const { user, getProfile, logout } = useAuthStore()
 
@@ -27,14 +31,16 @@ export default function DashboardPage() {
       <header className="bg-background border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <h1 className="text-xl font-semibold">Delivery System</h1>
+            <h1 className="text-xl font-semibold">{t('common.appName')}</h1>
             <div className="flex items-center gap-4">
               <span className="text-sm text-muted-foreground">
                 {user?.name || user?.email}
               </span>
+              <LanguageSwitcher />
+              <ThemeToggle />
               <Button variant="ghost" size="sm" onClick={handleLogout}>
                 <LogOut className="h-4 w-4 mr-2" />
-                Logout
+                {t('auth.logout')}
               </Button>
             </div>
           </div>
@@ -45,8 +51,8 @@ export default function DashboardPage() {
         <div className="grid gap-6">
           <Card>
             <CardHeader>
-              <CardTitle>Welcome, {user?.name || 'User'}</CardTitle>
-              <CardDescription>Your delivery management dashboard</CardDescription>
+              <CardTitle>{t('dashboard.welcome', { name: user?.name || 'User' })}</CardTitle>
+              <CardDescription>{t('dashboard.description')}</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="flex items-center gap-4 p-4 rounded-lg bg-muted/50">

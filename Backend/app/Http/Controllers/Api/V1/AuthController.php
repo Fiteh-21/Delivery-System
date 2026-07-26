@@ -9,7 +9,9 @@ use App\Http\Requests\V1\Auth\RegisterRequest;
 use App\Http\Requests\V1\Auth\ResetPasswordRequest;
 use App\Http\Resources\V1\AuthResource;
 use App\Http\Resources\V1\UserResource;
+use App\Http\Traits\ApiResponse;
 use App\Models\User;
+use App\Services\ActivityLogger;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Http\JsonResponse;
@@ -21,6 +23,7 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
+    use ApiResponse;
     /**
      * Register User
      *
@@ -42,13 +45,16 @@ class AuthController extends Controller
 
                 $user->sendEmailVerificationNotification();
 
+                ActivityLogger::register($request);
+
                 return AuthResource::make($user);
             });
         } catch (\Exception $e) {
-            return response()->json([
-                'message' => __('auth.register_error'),
-                'error' => config('app.debug') ? $e->getMessage() : null
-            ], 500);
+            return $this->error(
+                __('auth.register_error'),
+                500,
+                config('app.debug') ? $e->getMessage() : null
+            );
         }
     }
 
@@ -67,6 +73,8 @@ class AuthController extends Controller
 
         $user = $request->user();
 
+        ActivityLogger::login($request);
+
         return AuthResource::make($user);
     }
 
@@ -81,9 +89,10 @@ class AuthController extends Controller
     {
         // Revoke token
         $request->user()->currentAccessToken()->delete();
-        return response()->json([
-            'message' => __('auth.logout')
-        ]);
+
+        ActivityLogger::logout($request);
+
+        return $this->success(null, __('auth.logout'));
     }
 
     /**
@@ -112,9 +121,10 @@ class AuthController extends Controller
         $user = User::find($request->user()->id);
         $user->password = Hash::make($request->password);
         $user->save();
-        return response()->json([
-            'message' => __('passwords.changed')
-        ]);
+
+        ActivityLogger::passwordChanged($request);
+
+        return $this->success(null, __('passwords.changed'));
     }
 
     /**
@@ -143,23 +153,19 @@ class AuthController extends Controller
             (string) $hash,
             sha1($user->getEmailForVerification())
         )) {
-            return response()->json([
-                'message' => __('auth.invalid_verification_link'),
-            ], 403);
+            return $this->forbidden(__('auth.invalid_verification_link'));
         }
 
         if ($user->hasVerifiedEmail()) {
-            return response()->json([
-                'message' => __('auth.email_already_verified'),
-            ]);
+            return $this->success(null, __('auth.email_already_verified'));
         }
 
         $user->markEmailAsVerified();
         event(new Verified($user));
 
-        return response()->json([
-            'message' => __('auth.email_verified'),
-        ]);
+        ActivityLogger::emailVerified();
+
+        return $this->success(null, __('auth.email_verified'));
     }
 
     /**
@@ -173,16 +179,12 @@ class AuthController extends Controller
         $user = $request->user();
 
         if ($user->hasVerifiedEmail()) {
-            return response()->json([
-                'message' => __('auth.email_already_verified'),
-            ]);
+            return $this->success(null, __('auth.email_already_verified'));
         }
 
         $user->sendEmailVerificationNotification();
 
-        return response()->json([
-            'message' => __('auth.email_sent'),
-        ]);
+        return $this->success(null, __('auth.email_sent'));
     }
 
     /**
@@ -200,10 +202,11 @@ class AuthController extends Controller
 
             return $this->passwordResponse($status);
         } catch (\Exception $e) {
-            return response()->json([
-                'message' => __('passwords.unable_to_send_reset'),
-                'error' => config('app.debug') ? $e->getMessage() : null
-            ], 500);
+            return $this->error(
+                __('passwords.unable_to_send_reset'),
+                500,
+                config('app.debug') ? $e->getMessage() : null
+            );
         }
     }
 
@@ -227,15 +230,18 @@ class AuthController extends Controller
                     $user->tokens()->delete();
 
                     event(new PasswordReset($user));
+
+                    ActivityLogger::passwordReset();
                 }
             );
 
             return $this->passwordResponse($status);
         } catch (\Exception $e) {
-            return response()->json([
-                'message' => __('passwords.unable_to_reset_password'),
-                'error' => config('app.debug') ? $e->getMessage() : null
-            ], 500);
+            return $this->error(
+                __('passwords.unable_to_reset_password'),
+                500,
+                config('app.debug') ? $e->getMessage() : null
+            );
         }
     }
 
@@ -252,6 +258,10 @@ class AuthController extends Controller
 
         $response = $map[$status] ?? ['message' => $messages['default'] ?? __('passwords.unable_to_reset_password'), 'code' => 500];
 
-        return response()->json(['message' => $response['message']], $response['code']);
+        if ($response['code'] >= 400) {
+            return $this->error($response['message'], $response['code']);
+        }
+
+        return $this->success(null, $response['message'], $response['code']);
     }
 }

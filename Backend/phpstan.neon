@@ -1,0 +1,14 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+
+parameters:
+    paths:
+        - app
+    level: 6
+    ignoreErrors:
+        - '#Unsafe call to static method#'
+        - '#Cannot call method#'
+    excludePaths:
+        - vendor
+        - storage
+        - bootstrap/cache

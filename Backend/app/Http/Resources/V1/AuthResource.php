@@ -3,11 +3,10 @@
 namespace App\Http\Resources\V1;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Carbon;
 use Laravel\Sanctum\NewAccessToken;
 
-class AuthResource extends JsonResource
+class AuthResource extends ApiResponseResource
 {
     /**
      * Transform the resource into an array.
