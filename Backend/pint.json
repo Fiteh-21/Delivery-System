@@ -6,8 +6,6 @@
         "trailing_comma_in_multiline": false,
         "no_superfluous_phpdoc_tags": false,
         "new_with_parentheses": false,
-        "unary_operator_spaces": false,
-        "type_declaration_spaces": false,
-        "type_transparent_strict_types": false
+        "unary_operator_spaces": false
     }
 }
