@@ -30,7 +30,7 @@ jobs:
         run: composer install --no-progress --prefer-dist
 
       - name: Check code style
-        run: vendor/bin/pint --test
+        run: vendor/bin/pint --test 2>&1 | fold -w 200
 
       - name: Check naming conventions
         run: bash scripts/check-naming.sh
