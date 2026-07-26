@@ -1,0 +1,67 @@
+{
+  "common": {
+    "appName": "የስndl ሥርዓት",
+    "loading": "በመጫን ላይ...",
+    "error": "ስህተት",
+    "success": "ተሳክቷል",
+    "save": "አስቀምጥ",
+    "cancel": "ሰርዝ",
+    "delete": "ሰርዝ",
+    "edit": "አርም",
+    "create": "ፍጠር",
+    "search": "ፈልግ",
+    "noData": "መረጃ የለም",
+    "confirm": "አረጋግጥ",
+    "back": "ተመለስ",
+    "next": "ቀጥል",
+    "submit": "አስገባ"
+  },
+  "auth": {
+    "login": "ግባ",
+    "register": "ተመዝገብ",
+    "logout": "ውጣ",
+    "email": "ኢሜይል",
+    "username": "የተጠቃሚ ስም",
+    "password": "የይለፍ ቃል",
+    "confirmPassword": "የይለፍ ቃል አረጋግጥ",
+    "currentPassword": "አሁን ያለው የይለፍ ቃል",
+    "newPassword": "አዲስ የይለፍ ቃል",
+    "forgotPassword": "የይለፍ ቃል ረሳኸ?",
+    "resetPassword": "የይለፍ ቃል አድንቅ",
+    "noAccount": "መለያ የለህ?",
+    "hasAccount": "መለያ አለህ?",
+    "loginTitle": "እንኳን ደህና መጡ",
+    "loginSubtitle": "በመለያዎ ይግቡ",
+    "registerTitle": "መለያ ፍጠር",
+    "registerSubtitle": "ዝርዝሮችን በማስገባት ይጀምሩ",
+    "loginButton": "ግባ",
+    "registerButton": "ተመዝገብ",
+    "orContinueWith": "ወይም በዚህ ቀጥል",
+    "emailOrUsername": "ኢሜይል ወይም የተጠቃሚ ስም",
+    "rememberMe": "አስታውሰኝ",
+    "emailRequired": "ኢሜይል ወይም የተጠቃሚ ስም ያስፈልጋል",
+    "passwordRequired": "የይለፍ ቃል ያስፈልጋል",
+    "passwordMin": "የይለፍ ቃል ቢያንስ 8 ቁምፊዎች መሆን አለበት",
+    "passwordMatch": "የይለፍ ቃሎች አይመሳሰሉም",
+    "nameRequired": "ስም ያስፈልጋል"
+  },
+  "dashboard": {
+    "title": "ዴሽቦርድ",
+    "welcome": "እንኳን ደህና መጡ፣ {{name}}",
+    "description": "የስndl ሥርዓት መ管控 ዴሽቦርድ",
+    "profile": "መለያ",
+    "settings": "ማስተካከያ"
+  },
+  "errors": {
+    "notFound": "ገፅ አልተገኘም",
+    "notFoundDescription": "የሚፈልጉት ገፅ የለም ወይም ተን>NN>ቀይይိဣင်。",
+    "goHome": "ወደ ጋር ሂድ",
+    "somethingWrong": "ችግር ተፈጥሯል",
+    "errorMessage": "ያልተጠበቀ ስህተት ተፈጥሯል። እባክዎን እንደገና ሞክር።",
+    "tryAgain": "እንደገና ሞክር"
+  },
+  "language": {
+    "en": "English",
+    "am": "አማርኛ"
+  }
+}
