@@ -5,9 +5,7 @@ parameters:
     paths:
         - app
     level: 6
-    ignoreErrors:
-        - '#Unsafe call to static method#'
-        - '#Cannot call method#'
+    ignoreErrors: []
     excludePaths:
         - vendor
         - storage

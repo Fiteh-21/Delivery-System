@@ -10,6 +10,9 @@ class ActivityLogger
 {
     protected static string $channel = 'activity';
 
+    /**
+     * @param  array<string, mixed>  $extra
+     */
     public static function log(
         string $action,
         ?string $description = null,

@@ -244,6 +244,9 @@ class AuthController extends Controller
         }
     }
 
+    /**
+     * @param  array<string, string>  $messages
+     */
     protected function passwordResponse(string $status, array $messages = []): JsonResponse
     {
         $map = [
