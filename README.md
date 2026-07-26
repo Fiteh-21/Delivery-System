@@ -7,26 +7,31 @@ A delivery management system with a Laravel backend API and React frontend.
 ```
 ├── Backend/                # Laravel 12 API
 │   ├── app/                # Application code
+│   │   ├── Http/           # Controllers, Requests, Resources
+│   │   ├── Models/         # Eloquent models
+│   │   └── Services/       # Business logic (ActivityLogger)
 │   ├── config/             # Configuration files
 │   ├── database/           # Migrations, factories, seeders
 │   ├── docs/               # Backend documentation
 │   ├── routes/             # API routes
 │   ├── scripts/            # Utility scripts
 │   ├── tests/              # PHPUnit tests
-│   │   ├── Feature/        # Feature tests (15 endpoints)
-│   │   └── Unit/           # Unit tests (User model)
+│   │   ├── Feature/        # Feature tests (50 total)
+│   │   └── Unit/           # Unit tests
 │   └── dockerfiles/        # Docker build files
 ├── Frontend/               # React + Vite SPA
 │   ├── src/
 │   │   ├── components/ui/  # shadcn/ui components
+│   │   ├── hooks/          # Custom hooks (useTheme)
+│   │   ├── i18n/           # Translations (en, am)
 │   │   ├── lib/            # Utilities (api client, cn)
 │   │   ├── pages/          # Route pages
 │   │   ├── stores/         # Zustand state stores
-│   │   ├── test/           # Test setup
 │   │   └── types/          # TypeScript types
 │   ├── docs/               # Frontend documentation
 │   └── scripts/            # Utility scripts
 ├── .github/workflows/      # CI/CD pipelines
+├── .husky/                 # Pre-commit hooks
 └── README.md
 ```
 
@@ -84,6 +89,26 @@ Application: http://localhost:5173
 | GET | `/api/v1/email/verify/{id}/{hash}` | Verify email | No |
 | POST | `/api/v1/email/resend` | Resend verification | Yes |
 
+## API Response Format
+
+All responses follow consistent JSON format:
+
+```json
+// Success
+{
+  "success": true,
+  "message": "Success",
+  "data": { ... }
+}
+
+// Error
+{
+  "success": false,
+  "message": "Error message",
+  "errors": { ... }
+}
+```
+
 ## Tech Stack
 
 ### Backend
@@ -97,6 +122,8 @@ Application: http://localhost:5173
 | dedoc/scramble | Auto-generated API docs |
 | Laravel Pint | Code style |
 | PHPUnit | Testing |
+| PHPStan/Larastan | Static analysis (level 6) |
+| opcodesio/log-viewer | Web log viewer |
 
 ### Frontend
 
@@ -114,6 +141,7 @@ Application: http://localhost:5173
 | Zod | Validation |
 | Axios | HTTP client |
 | Vitest | Testing |
+| i18next | Internationalization (en, am) |
 
 ## Testing
 
@@ -170,6 +198,7 @@ npm run test:coverage # With coverage
 ```bash
 cd Backend
 vendor/bin/pint --test              # Code style check
+vendor/bin/phpstan analyse          # Static analysis
 bash scripts/check-naming.sh        # Naming conventions
 ```
 
@@ -182,9 +211,23 @@ npx tsc --noEmit                    # Type check
 bash scripts/check-naming.sh        # Naming conventions
 ```
 
+## Features
+
+### Backend
+- **Activity Logging** — User actions logged to `storage/logs/activity.log`
+- **API Response Format** — Consistent JSON responses
+- **Static Analysis** — PHPStan/Larastan level 6
+- **Log Viewer** — Web UI at `/logs`
+
+### Frontend
+- **Dark Mode** — Light/dark/system theme toggle
+- **i18n** — English + Amharic translations
+- **Error Handling** — ErrorBoundary + 404 page
+- **Pre-commit Hooks** — Auto-lint before commits
+
 ## CI/CD
 
-GitHub Actions pipeline runs on push/PR to `main`/`develop`:
+GitHub Actions pipeline runs on push/PR to `develop`:
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -193,6 +236,7 @@ GitHub Actions pipeline runs on push/PR to `main`/`develop`:
 │                                                          │
 │  Backend                                                 │
 │  ├── Lint (Pint + Naming Check)                          │
+│  ├── Static Analysis (PHPStan)                           │
 │  └── Test (PHP 8.2/8.3/8.4 x SQLite/MySQL/PostgreSQL)   │
 │                                                          │
 │  Frontend                                                │
@@ -214,6 +258,10 @@ GitHub Actions pipeline runs on push/PR to `main`/`develop`:
 - [Docker Development](Backend/docs/docker-development.md)
 - [Testing](Backend/docs/testing.md)
 - [Rate Limiting](Backend/docs/rate-limiting.md)
+- [PHPStan/Larastan](Backend/docs/phpstan.md)
+- [API Response Format](Backend/docs/api-response-format.md)
+- [Activity Logging](Backend/docs/activity-logging.md)
+- [Log Viewer](Backend/docs/log-viewer.md)
 
 ### Frontend
 
@@ -227,3 +275,7 @@ GitHub Actions pipeline runs on push/PR to `main`/`develop`:
 - [Routing](Frontend/docs/routing.md)
 - [Styling](Frontend/docs/styling.md)
 - [Testing](Frontend/docs/testing.md)
+- [Error Handling](Frontend/docs/error-handling.md)
+- [Dark Mode](Frontend/docs/dark-mode.md)
+- [i18n](Frontend/docs/i18n.md)
+- [Pre-commit Hooks](Frontend/docs/pre-commit-hooks.md)

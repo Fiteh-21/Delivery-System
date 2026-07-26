@@ -21,6 +21,10 @@ This is a **Laravel 12** backend-only REST API project with:
 | [Docker Development](./docker-development.md) | Docker-based development environment setup |
 | [Testing](./testing.md) | PHPUnit testing setup and conventions |
 | [Rate Limiting](./rate-limiting.md) | Rate limiter configuration and usage |
+| [PHPStan/Larastan](./phpstan.md) | Static analysis with Larastan |
+| [API Response Format](./api-response-format.md) | Standardized JSON responses |
+| [Activity Logging](./activity-logging.md) | User activity logging to files |
+| [Log Viewer](./log-viewer.md) | Web UI for viewing logs |
 
 ## Environment Variables
 

@@ -33,6 +33,10 @@ React SPA for the Delivery System.
 | [Routing](./routing.md) | Routes, guards, and navigation |
 | [Styling](./styling.md) | Tailwind CSS + shadcn/ui theming |
 | [Testing](./testing.md) | How to write tests |
+| [Error Handling](./error-handling.md) | ErrorBoundary, 404 page, toasts |
+| [Dark Mode](./dark-mode.md) | Theme toggle (light/dark/system) |
+| [i18n](./i18n.md) | Multi-language support (English/Amharic) |
+| [Pre-commit Hooks](./pre-commit-hooks.md) | Husky + lint-staged setup |
 
 ## Quick Start
 
