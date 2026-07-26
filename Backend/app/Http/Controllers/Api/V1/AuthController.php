@@ -31,8 +31,8 @@ class AuthController extends Controller
      *
      * @unauthenticated
      *
-     * @param App\Http\Requests\RegisterRequest $request
-     * @return \Illuminate\Http\JsonResponse
+     * @param RegisterRequest $request
+     * @return JsonResponse
      */
     public function register(RegisterRequest $request): AuthResource | JsonResponse
     {
@@ -65,8 +65,8 @@ class AuthController extends Controller
      *
      * @unauthenticated
      *
-     * @param App\Http\Requests\LoginRequest $request
-     * @return \Illuminate\Http\JsonResponse | App\Http\Resources\AuthResource
+     * @param LoginRequest $request
+     * @return JsonResponse
      */
     public function login(LoginRequest $request): AuthResource | JsonResponse
     {
@@ -132,7 +132,7 @@ class AuthController extends Controller
      * Get User
      *
      * @param Request $request
-     * @return \App\Http\Resources\UserResource
+     * @return UserResource
      */
     public function profile(Request $request): UserResource
     {
@@ -142,8 +142,7 @@ class AuthController extends Controller
     /**
      * Verify Email
      *
-     * @param App\Http\Requests\VerifyEmailRequest $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function verifyEmail(int $id, string $hash): JsonResponse
     {
@@ -172,8 +171,7 @@ class AuthController extends Controller
     /**
      * Resend Verification Email
      *
-     * @param App\Http\Requests\ResendVerificationRequest $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function resendVerificationEmail(Request $request): JsonResponse
     {
@@ -191,8 +189,8 @@ class AuthController extends Controller
     /**
      * Forgot Password
      *
-     * @param App\Http\Requests\ForgotPasswordRequest $request
-     * @return \Illuminate\Http\JsonResponse
+     * @param ForgotPasswordRequest $request
+     * @return JsonResponse
      */
     public function forgotPassword(ForgotPasswordRequest $request): JsonResponse
     {
@@ -214,8 +212,8 @@ class AuthController extends Controller
     /**
      * Reset Password
      *
-     * @param App\Http\Requests\ResetPasswordRequest $request
-     * @return \Illuminate\Http\JsonResponse
+     * @param ResetPasswordRequest $request
+     * @return JsonResponse
      */
     public function resetPassword(ResetPasswordRequest $request): JsonResponse
     {
