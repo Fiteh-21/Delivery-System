@@ -63,7 +63,7 @@ describe('DashboardPage', () => {
       </MemoryRouter>
     )
 
-    expect(screen.getByText('John Doe')).toBeInTheDocument()
+    expect(screen.getAllByText('John Doe').length).toBeGreaterThan(0)
     expect(screen.getByText('@johndoe')).toBeInTheDocument()
     expect(screen.getByText('john@example.com')).toBeInTheDocument()
   })

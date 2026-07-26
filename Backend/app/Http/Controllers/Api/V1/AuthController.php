@@ -12,6 +12,7 @@ use App\Http\Resources\V1\UserResource;
 use App\Http\Traits\ApiResponse;
 use App\Models\User;
 use App\Services\ActivityLogger;
+use Exception;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Http\JsonResponse;
@@ -50,7 +51,7 @@ class AuthController extends Controller
 
                 return AuthResource::make($user);
             });
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return $this->error(
                 __('auth.register_error'),
                 500,
@@ -201,7 +202,7 @@ class AuthController extends Controller
             );
 
             return $this->passwordResponse($status);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return $this->error(
                 __('passwords.unable_to_send_reset'),
                 500,
@@ -236,7 +237,7 @@ class AuthController extends Controller
             );
 
             return $this->passwordResponse($status);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return $this->error(
                 __('passwords.unable_to_reset_password'),
                 500,

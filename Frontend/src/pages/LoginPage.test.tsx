@@ -39,7 +39,7 @@ describe('LoginPage', () => {
     )
 
     expect(screen.getByText(/don't have an account/i)).toBeInTheDocument()
-    expect(screen.getByText('Sign up')).toHaveAttribute('href', '/register')
+    expect(screen.getByText('Sign Up')).toHaveAttribute('href', '/register')
   })
 
   it('validates required fields', async () => {
