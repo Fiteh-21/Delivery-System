@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
 import RegisterPage from './RegisterPage'
@@ -68,9 +68,9 @@ describe('RegisterPage', () => {
     )
 
     await user.type(screen.getByLabelText('Email'), 'not-an-email')
-    await user.tab()
 
-    await user.click(screen.getByRole('button', { name: /sign up/i }))
+    const form = screen.getByRole('button', { name: /sign up/i }).closest('form')!
+    fireEvent.submit(form)
 
     expect(await screen.findByText('Invalid email address')).toBeInTheDocument()
   })
