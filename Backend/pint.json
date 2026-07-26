@@ -2,6 +2,8 @@
     "$schema": "https://laravel.com/schema/pint.json",
     "preset": "laravel",
     "rules": {
-        "array_syntax": ["short"]
+        "array_syntax": {
+            "syntax": "short"
+        }
     }
 }
