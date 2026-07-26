@@ -94,6 +94,11 @@ for file in config/*.php; do
     [ -f "$file" ] || continue
     filename=$(basename "$file" .php)
 
+    # Skip vendor-published configs (may contain hyphens)
+    case "$filename" in
+        log-viewer) continue ;;
+    esac
+
     if ! echo "$filename" | grep -qP '^[a-z][a-z0-9_]+$'; then
         error "Config '$filename' must be snake_case"
     fi
