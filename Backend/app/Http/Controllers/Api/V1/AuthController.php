@@ -84,7 +84,7 @@ class AuthController extends Controller
      * Logout User
      *
      * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function logout(Request $request): JsonResponse
     {
@@ -100,7 +100,7 @@ class AuthController extends Controller
      * Change Password
      *
      * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function changePassword(Request $request): JsonResponse
     {
