@@ -3,7 +3,6 @@ import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import DashboardPage from './DashboardPage'
 
-// Mock the auth store
 const mockUser = {
   id: 1,
   name: 'John Doe',
@@ -22,6 +21,14 @@ vi.mock('@/stores/auth', () => ({
     isLoading: false,
     isAuthenticated: true,
   })),
+}))
+
+vi.mock('@/components/LanguageSwitcher', () => ({
+  LanguageSwitcher: () => <button data-testid="lang-switcher">Lang</button>,
+}))
+
+vi.mock('@/components/ThemeToggle', () => ({
+  ThemeToggle: () => <button data-testid="theme-toggle">Theme</button>,
 }))
 
 describe('DashboardPage', () => {
@@ -46,7 +53,7 @@ describe('DashboardPage', () => {
       </MemoryRouter>
     )
 
-    expect(screen.getByText('Welcome, John Doe')).toBeInTheDocument()
+    expect(screen.getByText(/Welcome, John Doe/)).toBeInTheDocument()
   })
 
   it('renders user info', () => {

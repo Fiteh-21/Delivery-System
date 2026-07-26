@@ -24,6 +24,7 @@ use Illuminate\Validation\ValidationException;
 class AuthController extends Controller
 {
     use ApiResponse;
+
     /**
      * Register User
      *
@@ -85,7 +86,7 @@ class AuthController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function logout(Request $request): \Illuminate\Http\JsonResponse
+    public function logout(Request $request): JsonResponse
     {
         // Revoke token
         $request->user()->currentAccessToken()->delete();
@@ -101,7 +102,7 @@ class AuthController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function changePassword(Request $request): \Illuminate\Http\JsonResponse
+    public function changePassword(Request $request): JsonResponse
     {
         // Validate request
         $request->validate([
@@ -244,7 +245,6 @@ class AuthController extends Controller
             );
         }
     }
-
 
     protected function passwordResponse(string $status, array $messages = []): JsonResponse
     {

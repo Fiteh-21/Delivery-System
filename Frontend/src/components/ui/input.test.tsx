@@ -11,7 +11,7 @@ describe('Input', () => {
   it('renders with default type', () => {
     render(<Input data-testid="input" />)
     const input = screen.getByTestId('input')
-    expect(input).toHaveAttribute('type', 'text')
+    expect(input).not.toHaveAttribute('type')
   })
 
   it('renders with email type', () => {

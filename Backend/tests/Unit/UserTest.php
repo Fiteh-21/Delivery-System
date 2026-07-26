@@ -3,7 +3,10 @@
 namespace Tests\Unit;
 
 use App\Models\User;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
 class UserTest extends TestCase
@@ -37,7 +40,7 @@ class UserTest extends TestCase
         ]);
 
         $this->assertNotEquals('plain-password', $user->password);
-        $this->assertTrue(\Illuminate\Support\Facades\Hash::check('plain-password', $user->password));
+        $this->assertTrue(Hash::check('plain-password', $user->password));
     }
 
     public function test_user_implements_must_verify_email(): void
@@ -45,7 +48,7 @@ class UserTest extends TestCase
         $user = new User();
 
         $this->assertInstanceOf(
-            \Illuminate\Contracts\Auth\MustVerifyEmail::class,
+            MustVerifyEmail::class,
             $user
         );
     }
@@ -86,7 +89,7 @@ class UserTest extends TestCase
 
         $this->assertDatabaseHas('users', ['email' => 'taken@example.com']);
 
-        $this->expectException(\Illuminate\Database\QueryException::class);
+        $this->expectException(QueryException::class);
 
         User::factory()->create(['email' => 'taken@example.com']);
     }
@@ -97,7 +100,7 @@ class UserTest extends TestCase
 
         $this->assertDatabaseHas('users', ['username' => 'taken']);
 
-        $this->expectException(\Illuminate\Database\QueryException::class);
+        $this->expectException(QueryException::class);
 
         User::factory()->create(['username' => 'taken']);
     }
