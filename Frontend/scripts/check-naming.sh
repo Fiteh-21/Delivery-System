@@ -37,6 +37,9 @@ for file in src/pages/*.tsx; do
     [ -f "$file" ] || continue
     filename=$(basename "$file" .tsx)
 
+    # Skip test files
+    echo "$filename" | grep -qP '\.test$' && continue
+
     if ! echo "$filename" | grep -qP '^[A-Z][a-zA-Z0-9]+Page$'; then
         error "Page '$filename' must be PascalCase with 'Page' suffix"
     fi
@@ -50,6 +53,9 @@ echo "Checking Stores..."
 for file in src/stores/*.ts; do
     [ -f "$file" ] || continue
     filename=$(basename "$file" .ts)
+
+    # Skip test files
+    echo "$filename" | grep -qP '\.test$' && continue
 
     if ! echo "$filename" | grep -qP '^[a-z][a-zA-Z0-9]+$'; then
         error "Store '$filename' must be camelCase"
@@ -81,6 +87,9 @@ echo "Checking Lib files..."
 for file in src/lib/*.ts; do
     [ -f "$file" ] || continue
     filename=$(basename "$file" .ts)
+
+    # Skip test files
+    echo "$filename" | grep -qP '\.test$' && continue
 
     if ! echo "$filename" | grep -qP '^[a-z][a-zA-Z0-9]+$'; then
         error "Lib file '$filename' must be camelCase"
