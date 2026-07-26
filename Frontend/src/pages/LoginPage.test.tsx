@@ -4,7 +4,6 @@ import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
 import LoginPage from './LoginPage'
 
-// Mock the auth store
 vi.mock('@/stores/auth', () => ({
   useAuthStore: vi.fn(() => ({
     login: vi.fn(),
@@ -111,6 +110,6 @@ describe('LoginPage', () => {
       </MemoryRouter>
     )
 
-    expect(screen.getByRole('button', { name: /signing in/i })).toBeDisabled()
+    expect(screen.getByRole('button', { name: /loading/i })).toBeDisabled()
   })
 })

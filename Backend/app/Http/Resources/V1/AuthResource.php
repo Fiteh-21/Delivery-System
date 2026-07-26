@@ -24,7 +24,7 @@ class AuthResource extends ApiResponseResource
         $this->setTokenExpiration($newToken, $remember);
 
         return [
-            "user" => UserResource::make($this->resource),
+            'user' => UserResource::make($this->resource),
             'access_token' => $newToken->plainTextToken,
             'token_type' => 'Bearer',
             'expires_at' => $newToken->accessToken->expires_at->toDateTimeString(),
@@ -32,13 +32,6 @@ class AuthResource extends ApiResponseResource
         ];
     }
 
-    /**
-     * Set token expiration helper function
-     *
-     * @param NewAccessToken $newToken
-     * @param bool $rememberMe
-     * @return void
-     */
     protected function setTokenExpiration(NewAccessToken $newToken, bool $rememberMe = false): void
     {
         $expires = $rememberMe

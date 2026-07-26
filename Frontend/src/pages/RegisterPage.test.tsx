@@ -4,7 +4,6 @@ import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
 import RegisterPage from './RegisterPage'
 
-// Mock the auth store
 vi.mock('@/stores/auth', () => ({
   useAuthStore: vi.fn(() => ({
     register: vi.fn(),
@@ -25,13 +24,13 @@ describe('RegisterPage', () => {
       </MemoryRouter>
     )
 
-    expect(screen.getByText('Create account')).toBeInTheDocument()
+    expect(screen.getByText('Create an account')).toBeInTheDocument()
     expect(screen.getByLabelText(/name/i)).toBeInTheDocument()
     expect(screen.getByLabelText(/email/i)).toBeInTheDocument()
     expect(screen.getByLabelText(/username/i)).toBeInTheDocument()
-    expect(screen.getByLabelText(/^password$/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/password/i)).toBeInTheDocument()
     expect(screen.getByLabelText(/confirm password/i)).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: /create account/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /sign up/i })).toBeInTheDocument()
   })
 
   it('renders sign in link', () => {
@@ -54,7 +53,7 @@ describe('RegisterPage', () => {
       </MemoryRouter>
     )
 
-    await user.click(screen.getByRole('button', { name: /create account/i }))
+    await user.click(screen.getByRole('button', { name: /sign up/i }))
 
     expect(await screen.findByText('Name is required')).toBeInTheDocument()
     expect(await screen.findByText('Invalid email address')).toBeInTheDocument()
@@ -84,7 +83,7 @@ describe('RegisterPage', () => {
       </MemoryRouter>
     )
 
-    await user.type(screen.getByLabelText(/^password$/i), 'short')
+    await user.type(screen.getByLabelText(/password/i), 'short')
     await user.tab()
 
     expect(await screen.findByText('Password must be at least 8 characters')).toBeInTheDocument()
@@ -99,11 +98,11 @@ describe('RegisterPage', () => {
       </MemoryRouter>
     )
 
-    await user.type(screen.getByLabelText(/^password$/i), 'password123')
+    await user.type(screen.getByLabelText(/password/i), 'password123')
     await user.type(screen.getByLabelText(/confirm password/i), 'different')
     await user.tab()
 
-    expect(await screen.findByText("Passwords don't match")).toBeInTheDocument()
+    expect(await screen.findByText('Passwords do not match')).toBeInTheDocument()
   })
 
   it('submits form with valid data', async () => {
@@ -132,9 +131,9 @@ describe('RegisterPage', () => {
     await user.type(screen.getByLabelText(/name/i), 'John Doe')
     await user.type(screen.getByLabelText(/email/i), 'john@example.com')
     await user.type(screen.getByLabelText(/username/i), 'johndoe')
-    await user.type(screen.getByLabelText(/^password$/i), 'password123')
+    await user.type(screen.getByLabelText(/password/i), 'password123')
     await user.type(screen.getByLabelText(/confirm password/i), 'password123')
-    await user.click(screen.getByRole('button', { name: /create account/i }))
+    await user.click(screen.getByRole('button', { name: /sign up/i }))
 
     expect(mockRegister).toHaveBeenCalledWith({
       name: 'John Doe',

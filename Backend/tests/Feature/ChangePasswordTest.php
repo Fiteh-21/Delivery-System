@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
 class ChangePasswordTest extends TestCase
@@ -28,7 +29,7 @@ class ChangePasswordTest extends TestCase
 
         // Verify new password works
         $this->assertTrue(
-            \Illuminate\Support\Facades\Hash::check('new-password', $user->fresh()->password)
+            Hash::check('new-password', $user->fresh()->password)
         );
     }
 

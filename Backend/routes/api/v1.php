@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Health check
-Route::get('health', fn() => response()->json([
+Route::get('health', fn () => response()->json([
     'status' => 'healthy',
     'timestamp' => now()->toDateTimeString(),
 ]))->name('api.v1.health');
