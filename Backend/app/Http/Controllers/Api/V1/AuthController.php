@@ -111,7 +111,7 @@ class AuthController extends Controller
         ]);
 
         // check if current password is correct
-        if (!Hash::check($request->current_password, $request->user()->password)) {
+        if (! Hash::check($request->current_password, $request->user()->password)) {
 
             throw ValidationException::withMessages([
                 'current_password' => __('auth.failed')
