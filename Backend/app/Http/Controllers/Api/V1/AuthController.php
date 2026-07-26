@@ -79,7 +79,6 @@ class AuthController extends Controller
         return AuthResource::make($user);
     }
 
-
     /**
      * Logout User
      *

@@ -28,7 +28,7 @@ class RegisterRequest extends FormRequest
             'username' => ['required', 'string', 'max:255', 'unique:users', 'alpha_dash'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'password_confirmation' => ['required', 'string', 'min:8'],
-            'remember_me' => 'boolean'
+            'remember_me' => 'boolean',
         ];
     }
 
