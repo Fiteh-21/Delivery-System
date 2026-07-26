@@ -10,9 +10,9 @@ use Illuminate\Http\Resources\Json\JsonResource;
  * @property-read string $name
  * @property-read string $email
  * @property-read string $username
- * @property-read string|null $email_verified_at
- * @property-read string|null $created_at
- * @property-read string|null $updated_at
+ * @property-read \Carbon\Carbon|null $email_verified_at
+ * @property-read \Carbon\Carbon|null $created_at
+ * @property-read \Carbon\Carbon|null $updated_at
  */
 class UserResource extends JsonResource
 {
