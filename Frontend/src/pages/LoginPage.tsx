@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -15,7 +14,6 @@ export default function LoginPage() {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const { login, isLoading } = useAuthStore()
-  const [showPassword, setShowPassword] = useState(false)
 
   const loginSchema = z.object({
     login: z.string().min(1, t('auth.emailRequired')),
@@ -63,7 +61,7 @@ export default function LoginPage() {
               <Label htmlFor="password">{t('auth.password')}</Label>
               <Input
                 id="password"
-                type={showPassword ? 'text' : 'password'}
+                type="password"
                 placeholder="••••••••"
                 {...register('password')}
               />
