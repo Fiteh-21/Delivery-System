@@ -24,14 +24,14 @@ class PasswordResetTest extends TestCase
             ->assertJsonFragment(['message' => __('passwords.sent')]);
     }
 
-    public function test_forgot_password_with_invalid_email_returns_404(): void
+    public function test_forgot_password_with_invalid_email_returns_422(): void
     {
         $response = $this->postJson('/api/v1/forgot-password', [
             'email' => 'nonexistent@example.com',
         ]);
 
-        $response->assertNotFound()
-            ->assertJsonFragment(['message' => __('passwords.user')]);
+        $response->assertUnprocessable()
+            ->assertJsonValidationErrors(['email']);
     }
 
     public function test_forgot_password_requires_email(): void
