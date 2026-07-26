@@ -118,14 +118,14 @@ jobs:
 
       - name: Run tests (SQLite)
         if: matrix.database == 'sqlite'
-        run: vendor/bin/phpunit
+        run: php artisan test
         env:
           DB_CONNECTION: sqlite
           DB_DATABASE: ':memory:'
 
       - name: Run tests (MySQL)
         if: matrix.database == 'mysql'
-        run: vendor/bin/phpunit
+        run: php artisan test
         env:
           DB_CONNECTION: mysql
           DB_HOST: 127.0.0.1
@@ -136,7 +136,7 @@ jobs:
 
       - name: Run tests (PostgreSQL)
         if: matrix.database == 'pgsql'
-        run: vendor/bin/phpunit
+        run: php artisan test
         env:
           DB_CONNECTION: pgsql
           DB_HOST: 127.0.0.1
