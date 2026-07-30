@@ -1,0 +1,11 @@
+# Default owner for everything
+* @AmanuelLegese
+
+# Backend
+/Backend/ @AmanuelLegese
+
+# Frontend
+/Frontend/ @AmanuelLegese
+
+# CI/CD
+/.github/ @AmanuelLegese
