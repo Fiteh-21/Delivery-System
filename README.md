@@ -280,4 +280,4 @@ GitHub Actions pipeline runs on push/PR to `develop`:
 - [i18n](Frontend/docs/i18n.md)
 - [Pre-commit Hooks](Frontend/docs/pre-commit-hooks.md)
 
-Name: Fiteh Tesfaye.
+Name: Fiteh Tesfaye
