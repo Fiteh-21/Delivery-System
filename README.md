@@ -281,4 +281,6 @@ GitHub Actions pipeline runs on push/PR to `develop`:
 - [Pre-commit Hooks](Frontend/docs/pre-commit-hooks.md)
 Biniyam Amenu
 
-Name: Fiteh Tesfaye
+Name: Fiteh Tesfaye 
+
+Name:kidist zewde
