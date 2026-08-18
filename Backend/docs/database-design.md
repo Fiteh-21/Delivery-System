@@ -79,7 +79,7 @@ Stores all registered users of the platform. Customers, Restaurant Managers, Dri
 | `name`              | VARCHAR(255)    | NOT NULL                     | Full name of the user.                                  |
 | `email`             | VARCHAR(255)    | NOT NULL, UNIQUE             | Email address used for authentication.                  |
 | `username`          | VARCHAR(255)    | NOT NULL, UNIQUE             | Username used by the authentication system.             |
-| `phone`             | VARCHAR(20)     | NULL, UNIQUE                 | User's primary contact number.                          |
+| `phone`             | VARCHAR(20)     | NOT NULL, UNIQUE                 | User's primary contact number.                          |
 | `password`          | VARCHAR(255)    | NOT NULL                     | Hashed password.                                        |
 | `role`              | ENUM            | NOT NULL, DEFAULT `customer` | `customer`, `restaurant_manager`, `driver`, or `admin`. |
 | `status`            | ENUM            | NOT NULL, DEFAULT `active`   | `active`, `inactive`, or `suspended`.                   |
@@ -94,7 +94,7 @@ Stores all registered users of the platform. Customers, Restaurant Managers, Dri
 | `id`       | Primary Key | Unique record identification.                  |
 | `email`    | UNIQUE      | Prevent duplicate email addresses.             |
 | `username` | UNIQUE      | Prevent duplicate usernames.                   |
-| `phone`    | UNIQUE      | Prevent duplicate phone numbers when provided. |
+| `phone`    | UNIQUE      | Prevent duplicate phone numbers. |
 | `role`     | INDEX       | Improve role-based queries.                    |
 | `status`   | INDEX       | Improve account-status filtering.              |
 
@@ -393,7 +393,7 @@ Stores online payment information associated with customer orders. Payments are 
 | `id`                    | BIGINT UNSIGNED | Primary Key, Auto Increment        | Unique payment identifier.                             |
 | `order_id`              | BIGINT UNSIGNED | NOT NULL, UNIQUE, FK → `orders.id` | Order associated with the payment.                     |
 | `amount`                | DECIMAL(10,2)   | NOT NULL                           | Amount processed for the order.                        |
-| `payment_method`        | ENUM            | NOT NULL                           | Supported payment method such as `telebirr` or `card`. |
+| `payment_method`        | ENUM            | NOT NULL                           | Allowed values: `telebirr` or `card`.             |
 | `status`                | ENUM            | NOT NULL, DEFAULT `pending`        | `pending`, `paid`, `failed`, or `refunded`.            |
 | `transaction_reference` | VARCHAR(255)    | NULL, UNIQUE                       | Payment gateway transaction/reference identifier.      |
 | `paid_at`               | TIMESTAMP       | NULL                               | Date and time payment was successfully completed.      |

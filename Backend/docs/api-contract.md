@@ -21,7 +21,8 @@ The registration request includes:
 
 - `name` — required
 - `email` — required and unique
-- `phone` — optional and nullable
+- `username` — required and unique
+- `phone` — required and unique
 - `password` — required
 - `password_confirmation` — required
 - `role` — handled according to the system's authorization rules
@@ -116,6 +117,7 @@ The platform uses digital payment processing. The customer does not pay cash dir
 - A payment belongs to one order.
 - An order can have at most one payment record.
 - Payment status must be tracked.
+- Supported payment methods are `telebirr` and `card`.
 - The system must not treat an unpaid order as successfully paid.
 - The driver does not collect cash from the customer.
 
@@ -167,6 +169,7 @@ The system stores the driver's current location so customers can track an active
 - Only authenticated customers can submit ratings.
 - A customer must have purchased the menu item.
 - A customer can submit at most one rating for each purchased order item.
+- Ratings can only be submitted after the related order has been delivered.
 - Rating values must be between 1 and 5.
 - Comments are optional.
 - The system can calculate the menu item's average rating from its ratings.
