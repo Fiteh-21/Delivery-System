@@ -25,7 +25,7 @@ The registration request includes:
 - `phone` — required and unique
 - `password` — required
 - `password_confirmation` — required
-- `role` — handled according to the system's authorization rules
+- `role` — optional; role assignment is server-enforced. If omitted, the user is registered as `customer`. Requests for `restaurant_manager` or `driver` are treated as applications and require admin approval. The `admin` role cannot be self-assigned.
 
 ---
 
