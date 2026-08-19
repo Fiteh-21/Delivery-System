@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Api\V1;
-//
+
 use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\Auth\ForgotPasswordRequest;
 use App\Http\Requests\V1\Auth\LoginRequest;
