@@ -70,7 +70,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * @return HasOne<Restaurant, $this>
+     * @return HasMany<Restaurant, $this>
      */
    public function restaurants(): HasMany
 {
