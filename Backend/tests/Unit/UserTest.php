@@ -124,16 +124,15 @@ class UserTest extends TestCase
     );
 }
 
-public function test_user_has_restaurant_relationship(): void
+public function test_user_has_restaurants_relationship(): void
 {
     $user = new User();
 
     $this->assertInstanceOf(
-        HasOne::class,
-        $user->restaurant()
+        HasMany::class,
+        $user->restaurants()
     );
 }
-
 public function test_user_has_orders_relationship(): void
 {
     $user = new User();

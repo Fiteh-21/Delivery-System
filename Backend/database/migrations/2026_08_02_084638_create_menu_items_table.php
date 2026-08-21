@@ -29,7 +29,8 @@ return new class extends Migration
             $table->text('description')
                 ->nullable();
 
-            $table->decimal('price', 10, 2);
+            $table->decimal('price', 10, 2)
+    ->unsigned();
 
             $table->boolean('is_available')
                 ->default(true);

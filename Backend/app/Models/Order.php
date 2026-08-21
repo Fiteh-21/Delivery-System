@@ -48,13 +48,12 @@ class Order extends Model
     }
 
     /**
-     * @return BelongsTo<User, $this>
-     */
-    public function driver(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'driver_id');
-    }
-
+ * @return BelongsTo<DriverProfile, $this>
+ */
+public function driver(): BelongsTo
+{
+    return $this->belongsTo(DriverProfile::class, 'driver_id');
+}
     /**
      * @return HasMany<OrderItem, $this>
      */

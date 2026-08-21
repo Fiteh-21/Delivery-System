@@ -25,10 +25,10 @@ return new class extends Migration
                 ->cascadeOnUpdate();
 
             $table->foreignId('driver_id')
-                ->nullable()
-                ->constrained('users')
-                ->nullOnDelete()
-                ->cascadeOnUpdate();
+    ->nullable()
+    ->constrained('driver_profiles')
+    ->nullOnDelete()
+    ->cascadeOnUpdate();
 
             $table->decimal('subtotal', 10, 2);
 

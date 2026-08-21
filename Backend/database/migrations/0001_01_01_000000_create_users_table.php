@@ -26,7 +26,6 @@ return new class extends Migration
                 ->nullable();
 
           $table->string('phone', 20)
-    ->nullable()
     ->unique();
 
             $table->string('password');

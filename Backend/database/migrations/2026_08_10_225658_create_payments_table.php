@@ -17,10 +17,10 @@ return new class extends Migration
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
 
-            $table->string('payment_method', 50);
-
-            $table->string('payment_provider', 100)
-                ->nullable();
+            $table->enum('payment_method', [
+    'telebirr',
+    'card',
+]);
 
             $table->string('transaction_reference', 255)
                 ->nullable()

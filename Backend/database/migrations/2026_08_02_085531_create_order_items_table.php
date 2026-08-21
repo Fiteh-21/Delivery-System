@@ -27,7 +27,7 @@ return new class extends Migration
 
             $table->string('item_name', 255);
 
-            $table->integer('quantity');
+           $table->unsignedInteger('quantity');
 
             $table->decimal('unit_price', 10, 2);
 

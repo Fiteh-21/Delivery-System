@@ -72,10 +72,10 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * @return HasOne<Restaurant, $this>
      */
-    public function restaurant(): HasOne
-    {
-        return $this->hasOne(Restaurant::class, 'manager_id');
-    }
+   public function restaurants(): HasMany
+{
+    return $this->hasMany(Restaurant::class, 'manager_id');
+}
 
     /**
      * @return HasMany<Order, $this>

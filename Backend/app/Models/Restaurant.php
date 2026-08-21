@@ -20,10 +20,6 @@ class Restaurant extends Model
 
     ];
 
-    protected $casts = [
-        'is_open' => 'boolean',
-    ];
-
     /**
      * @return BelongsTo<User, $this>
      */
