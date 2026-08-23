@@ -15,7 +15,7 @@ class RoleMiddlewareTest extends TestCase
     {
         parent::setUp();
 
-        Route::middleware(['auth:sanctum', 'role:restaurant_manager'])
+        Route::middleware(['auth:sanctum', 'role:restaurant_manager,driver'])
             ->get('/api/v1/test-role', fn () => response()->json([
                 'message' => 'Access granted',
             ]));
@@ -48,7 +48,7 @@ class RoleMiddlewareTest extends TestCase
         $response->assertStatus(403)
             ->assertJson([
                 'success' => false,
-                'message' => 'Forbidden',
+                'message' => 'You do not have permission to access this resource.',
             ]);
     }
 
@@ -67,10 +67,10 @@ class RoleMiddlewareTest extends TestCase
             ]);
     }
 
-    public function test_user_can_have_multiple_allowed_roles(): void
+    public function test_route_accepts_multiple_allowed_roles(): void
     {
         $user = User::factory()->create([
-            'role' => 'restaurant_manager',
+            'role' => 'driver',
         ]);
 
         $response = $this->actingAs($user, 'sanctum')
