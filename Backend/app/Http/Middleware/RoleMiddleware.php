@@ -24,11 +24,6 @@ class RoleMiddleware
             return $this->unauthorized('Unauthenticated.');
         }
 
-        // Admin has access to all role-protected routes.
-        if ($user->role === 'admin') {
-            return $next($request);
-        }
-
         if (! in_array($user->role, $roles, true)) {
             return $this->forbidden('You do not have permission to access this resource.');
         }

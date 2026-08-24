@@ -52,7 +52,7 @@ class RoleMiddlewareTest extends TestCase
             ]);
     }
 
-    public function test_admin_can_access_any_role_protected_route(): void
+    public function test_admin_is_forbidden_when_role_is_not_allowed(): void
     {
         $user = User::factory()->create([
             'role' => 'admin',
@@ -61,9 +61,10 @@ class RoleMiddlewareTest extends TestCase
         $response = $this->actingAs($user, 'sanctum')
             ->getJson('/api/v1/test-role');
 
-        $response->assertStatus(200)
+        $response->assertStatus(403)
             ->assertJson([
-                'message' => 'Access granted',
+                'success' => false,
+                'message' => 'You do not have permission to access this resource.',
             ]);
     }
 
