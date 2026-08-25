@@ -28,43 +28,6 @@ The registration request includes:
 
 ---
 
-## Role Applications
-
-| Method | Endpoint                                               | Description                                      | Role     | Auth |
-| ------ | ------------------------------------------------------ | ------------------------------------------------ | -------- | ---- |
-| POST   | `/api/v1/driver-applications`                          | Submit driver application                        | Customer | Yes  |
-| GET    | `/api/v1/driver-applications/status`                   | View own application status                      | Customer | Yes  |
-| PUT    | `/api/v1/driver-applications/{id}/approval-status`     | Approve or reject driver application             | Admin    | Yes  |
-| POST   | `/api/v1/restaurant-applications`                      | Submit restaurant manager application            | Customer | Yes  |
-| GET    | `/api/v1/restaurant-applications/status`               | View own application status                      | Customer | Yes  |
-| PUT    | `/api/v1/restaurant-applications/{id}/approval-status` | Approve or reject restaurant manager application | Admin    | Yes  |
-
-### Driver Application Rules
-
-- Only authenticated customers can apply.
-- A customer can have only one active driver application.
-- New driver applications start with `approval_status = pending`.
-- Only administrators can approve or reject applications.
-- When approved:
-    - The user's role is updated from `customer` to `driver`.
-    - The driver can access driver-specific features.
-
-- When rejected:
-    - The user remains a customer.
-
-### Restaurant Manager Application Rules
-
-- Only authenticated customers can apply.
-- A customer can have only one active restaurant manager application.
-- New restaurant applications start with `approval_status = pending`.
-- Only administrators can approve or reject applications.
-- When approved:
-    - The user's role is updated from `customer` to `restaurant_manager`.
-    - The user can create and manage restaurants.
-
-- When rejected:
-    - The user remains a customer.
-
 ## Restaurants
 
 | Method | Endpoint                                   | Description                       | Role               | Auth |
@@ -84,7 +47,6 @@ The registration request includes:
 - Only authenticated customers can submit a restaurant application.
 - Newly created restaurants must have `approval_status = pending`.
 - Only administrators can approve or reject restaurant applications.
-- When approved, the user's role is updated from `customer` to `restaurant_manager`.
 - Rejected restaurants are not visible to the public.
 
 ---
@@ -177,11 +139,6 @@ The platform uses digital payment processing. The customer does not pay cash dir
 | PUT    | `/api/v1/driver-profile/online-status` | Update driver's online status           | Driver | Yes  |
 
 - A driver has one driver profile.
-- Only authenticated customers can create a driver profile application.
-- Newly created driver profiles must have `approval_status = pending`.
-- Only administrators can approve or reject driver applications.
-- When approved, the user's role is updated from `customer` to `driver`.
-- When rejected, the user remains a customer.
 
 ---
 
