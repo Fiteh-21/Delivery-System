@@ -43,7 +43,7 @@ class AuthController extends Controller
                     'email' => $request->email,
                     'username' => $request->username,
                     'phone' => $request->phone,
-                    'password' => Hash::make($request->password),
+                    'password' => $request->password,
                 ]);
 
                 $user->sendEmailVerificationNotification();
@@ -121,7 +121,7 @@ class AuthController extends Controller
 
         // Update password
         $user = User::find($request->user()->id);
-        $user->password = Hash::make($request->password);
+           $user->password = $request->password;
         $user->save();
 
         ActivityLogger::passwordChanged($request);
@@ -223,8 +223,8 @@ class AuthController extends Controller
                 $request->only('email', 'password', 'password_confirmation', 'token'),
                 function (User $user, string $password) {
                     // Update password
-                    $user->forceFill([
-                        'password' => Hash::make($password),
+                   $user->forceFill([
+                        'password' => $password,
                     ])->save();
 
                     $user->tokens()->delete();

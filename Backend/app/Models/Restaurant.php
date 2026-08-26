@@ -9,14 +9,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Restaurant extends Model
 {
     protected $fillable = [
-        'manager_id',
         'name',
         'description',
         'address',
         'phone',
         'logo',
-        'approval_status',
-        'status',
 
     ];
 

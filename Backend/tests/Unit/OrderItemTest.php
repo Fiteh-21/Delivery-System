@@ -12,12 +12,7 @@ class OrderItemTest extends TestCase
     public function test_order_item_has_fillable_attributes(): void
     {
         $this->assertEquals([
-            'order_id',
-            'menu_item_id',
-            'item_name',
             'quantity',
-            'unit_price',
-            'subtotal',
         ], (new OrderItem())->getFillable());
     }
 

@@ -14,7 +14,6 @@ class MenuItemTest extends TestCase
         $model = new MenuItem();
 
         $this->assertEquals([
-            'restaurant_id',
             'category_id',
             'name',
             'description',

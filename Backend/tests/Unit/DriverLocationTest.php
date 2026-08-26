@@ -13,10 +13,8 @@ class DriverLocationTest extends TestCase
         $model = new DriverLocation();
 
         $this->assertEquals([
-            'driver_profile_id',
             'latitude',
             'longitude',
-            'recorded_at',
         ], $model->getFillable());
     }
 

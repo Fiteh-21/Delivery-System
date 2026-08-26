@@ -10,17 +10,8 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Order extends Model
 {
     protected $fillable = [
-        'customer_id',
-        'restaurant_id',
-        'driver_id',
-        'subtotal',
-        'delivery_fee',
-        'total_amount',
         'delivery_address',
         'phone',
-        'status',
-        'assigned_at',
-        'delivered_at',
     ];
 
     protected $casts = [

@@ -13,17 +13,8 @@ class OrderTest extends TestCase
     public function test_order_has_fillable_attributes(): void
     {
         $this->assertEquals([
-            'customer_id',
-            'restaurant_id',
-            'driver_id',
-            'subtotal',
-            'delivery_fee',
-            'total_amount',
             'delivery_address',
             'phone',
-            'status',
-            'assigned_at',
-            'delivered_at',
         ], (new Order())->getFillable());
     }
 

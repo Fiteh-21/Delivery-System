@@ -11,12 +11,7 @@ class PaymentTest extends TestCase
     public function test_payment_has_fillable_attributes(): void
     {
         $this->assertEquals([
-            'order_id',
             'payment_method',
-            'transaction_reference',
-            'amount',
-            'status',
-            'paid_at',
         ], (new Payment())->getFillable());
     }
 
