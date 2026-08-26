@@ -25,27 +25,30 @@ The registration request includes:
 - `phone` — required and unique
 - `password` — required
 - `password_confirmation` — required
-- `role` — optional; role assignment is server-enforced. If omitted, the user is registered as `customer`. Requests for `restaurant_manager` or `driver` are treated as applications and require admin approval. The `admin` role cannot be self-assigned.
 
 ---
 
 ## Restaurants
 
-| Method | Endpoint                                   | Description                       | Role               | Auth |
-| ------ | ------------------------------------------ | --------------------------------- | ------------------ | ---- |
-| GET    | `/api/v1/restaurants`                      | Retrieve all approved restaurants | Public             | No   |
-| GET    | `/api/v1/restaurants/{id}`                 | Retrieve restaurant details       | Public             | No   |
-| GET    | `/api/v1/restaurants/{id}/menu-items`      | Retrieve restaurant menu          | Public             | No   |
-| POST   | `/api/v1/restaurants`                      | Create a restaurant               | Restaurant Manager | Yes  |
-| PUT    | `/api/v1/restaurants/{id}`                 | Update restaurant information     | Restaurant Manager | Yes  |
-| PUT    | `/api/v1/restaurants/{id}/approval-status` | Approve or reject a restaurant    | Admin              | Yes  |
-| DELETE | `/api/v1/restaurants/{id}`                 | Delete a restaurant               | Admin              | Yes  |
+| Method | Endpoint                                   | Description                                               | Role               | Auth |
+| ------ | ------------------------------------------ | --------------------------------------------------------- | ------------------ | ---- |
+| GET    | `/api/v1/restaurants`                      | Retrieve all approved restaurants                         | Public             | No   |
+| GET    | `/api/v1/restaurants/{id}`                 | Retrieve restaurant details                               | Public             | No   |
+| GET    | `/api/v1/restaurants/{id}/menu-items`      | Retrieve restaurant menu                                  | Public             | No   |
+| GET    | `/api/v1/restaurants/my`                   | Retrieve restaurants managed by the authenticated manager | Restaurant Manager | Yes  |
+| POST   | `/api/v1/restaurants`                      | Create a restaurant                                       | Restaurant Manager | Yes  |
+| PUT    | `/api/v1/restaurants/{id}`                 | Update restaurant information                             | Restaurant Manager | Yes  |
+| PUT    | `/api/v1/restaurants/{id}/approval-status` | Approve or reject a restaurant                            | Admin              | Yes  |
+| DELETE | `/api/v1/restaurants/{id}`                 | Delete a restaurant                                       | Admin              | Yes  |
 
 ### Restaurant Ownership Rule
 
-A Restaurant Manager can manage multiple restaurants.
-
-The API must verify that the authenticated manager owns/manages the restaurant before allowing manager-level operations on it.
+- Each restaurant belongs to one restaurant manager, and each restaurant manager can manage multiple restaurants.
+- The API must verify that the authenticated manager owns/manages the restaurant before allowing manager-level operations on it.
+- Only authenticated customers can submit a restaurant application.
+- Newly created restaurants must have `approval_status = pending`.
+- Only administrators can approve or reject restaurant applications.
+- Rejected restaurants are not visible to the public.
 
 ---
 
@@ -72,6 +75,8 @@ The API must verify that the authenticated manager owns/manages the restaurant b
 | PUT    | `/api/v1/menu-items/{id}`                     | Update menu item                  | Restaurant Manager | Yes  |
 | DELETE | `/api/v1/menu-items/{id}`                     | Delete menu item                  | Restaurant Manager | Yes  |
 
+### Menu Item Rule
+
 The backend must verify that the authenticated restaurant manager manages the restaurant associated with the menu item.
 
 ---
@@ -97,6 +102,8 @@ The backend must verify that the authenticated restaurant manager manages the re
 | POST   | `/api/v1/orders`                    | Create an order from the customer's cart             | Customer                                    | Yes  |
 | PUT    | `/api/v1/orders/{id}/status`        | Update order status                                  | Restaurant Manager, Driver, Admin           | Yes  |
 | PUT    | `/api/v1/orders/{id}/assign-driver` | Assign a driver to an order                          | Admin                                       | Yes  |
+
+### Order Rule
 
 The API must enforce authorization so users can only access orders relevant to their role and relationship with the order.
 
@@ -132,7 +139,7 @@ The platform uses digital payment processing. The customer does not pay cash dir
 | PUT    | `/api/v1/driver-profile`               | Update driver profile                   | Driver | Yes  |
 | PUT    | `/api/v1/driver-profile/online-status` | Update driver's online status           | Driver | Yes  |
 
-A driver has one driver profile.
+- A driver has one driver profile.
 
 ---
 
