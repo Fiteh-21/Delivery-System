@@ -26,10 +26,18 @@ return new class extends Migration
                 ->nullable()
                 ->unique();
 
+            $table->enum('approval_status', [
+                'pending',
+                'approved',
+                'rejected',
+            ])->default('pending');
+
             $table->boolean('is_online')
                 ->default(false);
 
             $table->timestamps();
+
+            $table->index('approval_status');
         });
     }
 

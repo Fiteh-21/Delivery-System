@@ -30,19 +30,20 @@ The registration request includes:
 
 ## Restaurants
 
-| Method | Endpoint                                   | Description                       | Role               | Auth |
-| ------ | ------------------------------------------ | --------------------------------- | ------------------ | ---- |
-| GET    | `/api/v1/restaurants`                      | Retrieve all approved restaurants | Public             | No   |
-| GET    | `/api/v1/restaurants/{id}`                 | Retrieve restaurant details       | Public             | No   |
-| GET    | `/api/v1/restaurants/{id}/menu-items`      | Retrieve restaurant menu          | Public             | No   |
-| POST   | `/api/v1/restaurants`                      | Create a restaurant               | Restaurant Manager | Yes  |
-| PUT    | `/api/v1/restaurants/{id}`                 | Update restaurant information     | Restaurant Manager | Yes  |
-| PUT    | `/api/v1/restaurants/{id}/approval-status` | Approve or reject a restaurant    | Admin              | Yes  |
-| DELETE | `/api/v1/restaurants/{id}`                 | Delete a restaurant               | Admin              | Yes  |
+| Method | Endpoint                                   | Description                                               | Role               | Auth |
+| ------ | ------------------------------------------ | --------------------------------------------------------- | ------------------ | ---- |
+| GET    | `/api/v1/restaurants`                      | Retrieve all approved restaurants                         | Public             | No   |
+| GET    | `/api/v1/restaurants/{id}`                 | Retrieve restaurant details                               | Public             | No   |
+| GET    | `/api/v1/restaurants/{id}/menu-items`      | Retrieve restaurant menu                                  | Public             | No   |
+| GET    | `/api/v1/restaurants/my`                   | Retrieve restaurants managed by the authenticated manager | Restaurant Manager | Yes  |
+| POST   | `/api/v1/restaurants`                      | Create a restaurant                                       | Restaurant Manager | Yes  |
+| PUT    | `/api/v1/restaurants/{id}`                 | Update restaurant information                             | Restaurant Manager | Yes  |
+| PUT    | `/api/v1/restaurants/{id}/approval-status` | Approve or reject a restaurant                            | Admin              | Yes  |
+| DELETE | `/api/v1/restaurants/{id}`                 | Delete a restaurant                                       | Admin              | Yes  |
 
 ### Restaurant Ownership Rule
 
-- A Restaurant Manager can manage multiple restaurants.
+- Each restaurant belongs to one restaurant manager, and each restaurant manager can manage multiple restaurants.
 - The API must verify that the authenticated manager owns/manages the restaurant before allowing manager-level operations on it.
 - Only authenticated customers can submit a restaurant application.
 - Newly created restaurants must have `approval_status = pending`.

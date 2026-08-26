@@ -26,12 +26,28 @@ class UserTest extends TestCase
         'username',
         'phone',
         'password',
-        'role',
-        'status',
     ],
     $user->getFillable()
 );
     }
+
+    public function test_role_and_status_are_not_mass_assignable(): void
+{
+    $user = new User();
+
+    $user->fill([
+        'name' => 'Ahmed',
+        'email' => 'ahmed@example.com',
+        'username' => 'ahmed',
+        'phone' => '0912345678',
+        'password' => 'password',
+        'role' => 'admin',
+        'status' => 'suspended',
+    ]);
+
+    $this->assertNull($user->role);
+    $this->assertNull($user->status);
+}
 
     public function test_user_has_hidden_attributes(): void
     {

@@ -24,7 +24,7 @@ return new class extends Migration
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
 
-            $table->integer('quantity')
+            $table->unsignedInteger('quantity')
                 ->default(1);
 
             $table->unique([

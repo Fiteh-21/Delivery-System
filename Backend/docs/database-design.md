@@ -256,7 +256,7 @@ Stores the items currently selected by customers before checkout.
 | `id`           | BIGINT UNSIGNED | Primary Key, Auto Increment    | Unique cart item identifier.     |
 | `customer_id`  | BIGINT UNSIGNED | NOT NULL, FK → `users.id`      | Customer who owns the cart item. |
 | `menu_item_id` | BIGINT UNSIGNED | NOT NULL, FK → `menu_items.id` | Selected menu item.              |
-| `quantity`     | INT             | NOT NULL, DEFAULT 1            | Quantity selected.               |
+| `quantity`     | INT UNSIGNED    | NOT NULL, DEFAULT 1            | Quantity selected.               |
 | `created_at`   | TIMESTAMP       | Auto Generated                 | Record creation timestamp.       |
 | `updated_at`   | TIMESTAMP       | Auto Generated                 | Record update timestamp.         |
 

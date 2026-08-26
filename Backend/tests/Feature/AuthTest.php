@@ -45,6 +45,7 @@ class AuthTest extends TestCase
         $response = $this->postJson('/api/v1/register', [
             'email' => 'john@example.com',
             'username' => 'johndoe',
+            'phone' => '0912345678',
             'password' => 'password123',
             'password_confirmation' => 'password123',
         ]);
@@ -59,6 +60,7 @@ class AuthTest extends TestCase
             'name' => 'John',
             'email' => 'not-an-email',
             'username' => 'johndoe',
+            'phone' => '0912345678',
             'password' => 'password123',
             'password_confirmation' => 'password123',
         ]);
@@ -66,6 +68,21 @@ class AuthTest extends TestCase
         $response->assertUnprocessable()
             ->assertJsonValidationErrors(['email']);
     }
+
+    public function test_register_requires_valid_phone(): void
+{
+    $response = $this->postJson('/api/v1/register', [
+        'name' => 'John',
+        'email' => 'john@example.com',
+        'username' => 'johndoe',
+        'phone' => '091234567',
+        'password' => 'password123',
+        'password_confirmation' => 'password123',
+    ]);
+
+    $response->assertUnprocessable()
+        ->assertJsonValidationErrors(['phone']);
+}
 
     public function test_register_requires_unique_email(): void
     {
@@ -75,6 +92,7 @@ class AuthTest extends TestCase
             'name' => 'John',
             'email' => 'existing@example.com',
             'username' => 'johndoe',
+            'phone' => '0912345678',
             'password' => 'password123',
             'password_confirmation' => 'password123',
         ]);
@@ -91,6 +109,7 @@ class AuthTest extends TestCase
             'name' => 'John',
             'email' => 'new@example.com',
             'username' => 'johndoe',
+            'phone' => '0912345678',
             'password' => 'password123',
             'password_confirmation' => 'password123',
         ]);
@@ -105,6 +124,7 @@ class AuthTest extends TestCase
             'name' => 'John',
             'email' => 'john@example.com',
             'username' => 'johndoe',
+            'phone' => '0912345678',
             'password' => 'password123',
         ]);
 
