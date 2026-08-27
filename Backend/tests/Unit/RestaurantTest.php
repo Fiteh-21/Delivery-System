@@ -14,14 +14,11 @@ class RestaurantTest extends TestCase
         $model = new Restaurant();
 
         $this->assertEquals([
-            'manager_id',
             'name',
             'description',
             'address',
             'phone',
             'logo',
-            'approval_status',
-            'status',
         ], $model->getFillable());
     }
 

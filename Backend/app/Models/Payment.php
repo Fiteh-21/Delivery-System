@@ -8,12 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Payment extends Model
 {
     protected $fillable = [
-        'order_id',
         'payment_method',
-        'transaction_reference',
-        'amount',
-        'status',
-        'paid_at',
     ];
 
     protected $casts = [

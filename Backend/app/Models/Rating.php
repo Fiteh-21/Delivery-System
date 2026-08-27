@@ -8,9 +8,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Rating extends Model
 {
     protected $fillable = [
-        'customer_id',
-        'menu_item_id',
-        'order_item_id',
         'rating',
         'comment',
     ];

@@ -9,10 +9,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class DriverProfile extends Model
 {
     protected $fillable = [
-        'user_id',
         'vehicle_type',
         'license_number',
-        'approval_status',
         'is_online',
     ];
 

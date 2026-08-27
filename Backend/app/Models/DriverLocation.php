@@ -8,10 +8,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class DriverLocation extends Model
 {
     protected $fillable = [
-        'driver_profile_id',
         'latitude',
         'longitude',
-        'recorded_at',
     ];
 
     protected $casts = [

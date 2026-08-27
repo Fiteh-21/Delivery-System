@@ -14,10 +14,8 @@ class DriverProfileTest extends TestCase
         $model = new DriverProfile();
 
         $this->assertEquals([
-            'user_id',
             'vehicle_type',
             'license_number',
-            'approval_status',
             'is_online',
         ], $model->getFillable());
     }

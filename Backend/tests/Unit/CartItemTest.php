@@ -11,7 +11,6 @@ class CartItemTest extends TestCase
     public function test_cart_item_has_fillable_attributes(): void
     {
         $this->assertEquals([
-            'customer_id',
             'menu_item_id',
             'quantity',
         ], (new CartItem())->getFillable());

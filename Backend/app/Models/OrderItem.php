@@ -9,12 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class OrderItem extends Model
 {
     protected $fillable = [
-        'order_id',
-        'menu_item_id',
-        'item_name',
         'quantity',
-        'unit_price',
-        'subtotal',
     ];
 
     protected $casts = [

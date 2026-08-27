@@ -11,9 +11,6 @@ class RatingTest extends TestCase
     public function test_rating_has_fillable_attributes(): void
     {
         $this->assertEquals([
-            'customer_id',
-            'menu_item_id',
-            'order_item_id',
             'rating',
             'comment',
         ], (new Rating())->getFillable());
