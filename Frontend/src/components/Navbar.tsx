@@ -4,13 +4,13 @@ export default function Navbar({ title = 'Dashboard' }) {
   const { count } = useNotifications()
   const { user } = useAuthStore()
   return (
-    <header className="flex items-center justify-between px-4 py-3 bg-white w-full">
+    <header className="flex items-center justify-between px-4 py-3 bg-background w-full">
       <h1 className="text-lg font-semibold">{title}</h1>
 
       <div className="flex items-center gap-4">
         <div className="relative flex items-center">
           <svg
-            className="absolute left-2 text-gray-400"
+            className="absolute left-2 text-muted-foreground"
             width="16"
             height="16"
             viewBox="0 0 24 24"

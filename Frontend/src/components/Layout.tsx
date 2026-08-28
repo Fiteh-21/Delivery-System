@@ -134,7 +134,7 @@ export default function Layout() {
         </Sidebar>
 
         <div className="flex flex-col flex-1">
-          <div className="flex items-center border-b bg-white">
+          <div className="flex items-center border-b bg-background">
             <SidebarTrigger className="ml-2" />
             <Navbar title={currentTitle} />
           </div>

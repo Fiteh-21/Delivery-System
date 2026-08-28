@@ -19,9 +19,9 @@ export function PendingApprovalsCard({
   onViewAll,
 }: PendingApprovalsCardProps) {
   return (
-    <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
+    <div className="rounded-2xl border border-border bg-card p-5 shadow-sm">
       <div className="mb-2 flex items-center justify-between">
-        <h3 className="text-base font-semibold text-gray-900">Pending Restaurant Approvals</h3>
+        <h3 className="text-base font-semibold text-foreground">Pending Restaurant Approvals</h3>
         <button
           type="button"
           onClick={onViewAll}

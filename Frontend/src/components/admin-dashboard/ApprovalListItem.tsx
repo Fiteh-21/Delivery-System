@@ -23,12 +23,12 @@ export function ApprovalListItem({
   return (
     <div
       className={cn(
-        'flex flex-col gap-4 border-t border-gray-100 py-4 first:border-t-0 first:pt-0 sm:flex-row sm:items-center sm:justify-between',
+        'flex flex-col gap-4 border-t border-border py-4 first:border-t-0 first:pt-0 sm:flex-row sm:items-center sm:justify-between',
         className,
       )}
     >
       <div className="flex items-center gap-3">
-        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gray-100 text-sm font-semibold text-gray-600">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-muted text-sm font-semibold text-muted-foreground">
           {avatarInitial}
         </div>
         <div>
