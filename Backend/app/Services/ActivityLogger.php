@@ -65,4 +65,40 @@ class ActivityLogger
     {
         self::auth('email_verified', $request);
     }
+
+    public static function restaurantCreated(?Request $request = null): void
+{
+    self::log(
+        'restaurant_created',
+        'Restaurant created',
+        $request
+    );
+}
+
+public static function restaurantUpdated(?Request $request = null): void
+{
+    self::log(
+        'restaurant_updated',
+        'Restaurant updated',
+        $request
+    );
+}
+
+public static function restaurantApprovalUpdated(?Request $request = null): void
+{
+    self::log(
+        'restaurant_approval_updated',
+        'Restaurant approval status updated',
+        $request
+    );
+}
+
+public static function restaurantDeleted(?Request $request = null): void
+{
+    self::log(
+        'restaurant_deleted',
+        'Restaurant deleted',
+        $request
+    );
+}
 }
