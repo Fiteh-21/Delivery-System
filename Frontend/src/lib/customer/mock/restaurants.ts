@@ -1,4 +1,4 @@
-import type { Restaurant } from '@/types/customer'
+import type { Restaurant } from '@/types/Customer'
 
 export const mockRestaurants: Restaurant[] = [
   {

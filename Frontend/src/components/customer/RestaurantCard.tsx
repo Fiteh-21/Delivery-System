@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Star } from 'lucide-react'
-import type { Restaurant } from '@/types/customer'
+import type { Restaurant } from '@/types/Customer'
 import { Card, CardContent } from '@/components/ui/card'
 
 interface RestaurantCardProps {

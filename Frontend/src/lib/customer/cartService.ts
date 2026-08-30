@@ -1,4 +1,4 @@
-import type { CartItem, MenuItem } from '../../types/customer'
+import type { CartItem, MenuItem } from '../../types/Customer'
 import api from '../api'
 
 // Since Cart backend endpoints might not be implemented, we define a fallback local storage key

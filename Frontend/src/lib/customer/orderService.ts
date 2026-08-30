@@ -1,4 +1,4 @@
-import type { Order, CartItem, Payment } from '../../types/customer'
+import type { Order, CartItem, Payment } from '../../types/Customer'
 import { mockOrders } from './mock/orders'
 import api from '../api'
 

@@ -1,4 +1,4 @@
-import type { Category, MenuItem } from '@/types/customer'
+import type { Category, MenuItem } from '@/types/Customer'
 
 export const mockCategories: Category[] = [
   { id: 1, name: 'Ethiopian Food', description: 'Traditional Ethiopian dishes' },

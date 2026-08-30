@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import type { CartItem, MenuItem } from '@/types/customer'
+import type { CartItem, MenuItem } from '@/types/Customer'
 import { getCart, addToCart, updateCartItem, removeFromCart, clearCart } from '@/lib/customer/cartService'
 
 interface CartState {

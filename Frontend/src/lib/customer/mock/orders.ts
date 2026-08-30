@@ -1,4 +1,4 @@
-import type { Order } from '@/types/customer'
+import type { Order } from '@/types/Customer'
 import { mockRestaurants } from './restaurants'
 import { mockMenuItems } from './categories'
 

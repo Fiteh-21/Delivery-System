@@ -1,4 +1,4 @@
-import type { Restaurant, Category, MenuItem } from '../../types/customer'
+import type { Restaurant, Category, MenuItem } from '../../types/Customer'
 import { mockRestaurants } from './mock/restaurants'
 import { mockCategories, mockMenuItems } from './mock/categories'
 

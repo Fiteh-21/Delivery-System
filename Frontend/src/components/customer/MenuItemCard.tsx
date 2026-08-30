@@ -1,5 +1,5 @@
 import { Plus, Minus } from 'lucide-react'
-import type { MenuItem } from '@/types/customer'
+import type { MenuItem } from '@/types/Customer'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 
