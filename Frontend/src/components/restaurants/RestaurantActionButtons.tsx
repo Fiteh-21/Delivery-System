@@ -1,5 +1,5 @@
 import { Check, CircleX } from 'lucide-react'
-import type { RestaurantDisplayStatus } from '@/types/restaurants'
+import type { RestaurantDisplayStatus } from '@/types/Restaurants'
 
 export interface RestaurantActionButtonsProps {
   status: RestaurantDisplayStatus

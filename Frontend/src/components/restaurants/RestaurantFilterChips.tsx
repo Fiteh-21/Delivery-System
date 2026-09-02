@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils'
-import type { RestaurantFilterStatus } from '@/types/restaurants'
+import type { RestaurantFilterStatus } from '@/types/Restaurants'
 import { RESTAURANT_FILTER_OPTIONS } from './restaurantStatusConfig'
 
 export interface RestaurantFilterChipsProps {

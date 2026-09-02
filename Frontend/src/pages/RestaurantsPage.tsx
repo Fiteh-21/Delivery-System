@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import type { RestaurantFilterStatus } from '@/types/restaurants'
+import type { RestaurantFilterStatus } from '@/types/Restaurants'
 import { useRestaurantAdminActions } from '@/hooks/useRestaurantAdminActions'
 import {
   RestaurantFilterChips,

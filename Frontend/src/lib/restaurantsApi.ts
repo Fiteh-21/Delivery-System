@@ -3,7 +3,7 @@ import type {
   Restaurant,
   RestaurantApprovalStatus,
   RestaurantOperationalStatus,
-} from '@/types/restaurants'
+} from '@/types/Restaurants'
 
 interface RestaurantApiRecord {
   id: number

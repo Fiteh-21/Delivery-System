@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { fetchRestaurants, updateRestaurantApproval } from '@/lib/restaurantsApi'
-import type { Restaurant } from '@/types/restaurants'
+import type { Restaurant } from '@/types/Restaurants'
 
 const RESTAURANTS_QUERY_KEY = ['restaurants'] as const
 

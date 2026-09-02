@@ -1,4 +1,4 @@
-import type { Restaurant, RestaurantDisplayStatus, RestaurantFilterStatus } from '@/types/restaurants'
+import type { Restaurant, RestaurantDisplayStatus, RestaurantFilterStatus } from '@/types/Restaurants'
 
 export interface RestaurantStatusMeta {
   label: string

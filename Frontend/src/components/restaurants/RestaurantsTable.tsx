@@ -1,7 +1,7 @@
 import { ChevronRight } from 'lucide-react'
 import { Skeleton } from '@/components/ui/skeleton'
 import { formatDisplayDate } from '@/lib/formatDisplayDate'
-import type { Restaurant, RestaurantDisplayStatus } from '@/types/restaurants'
+import type { Restaurant, RestaurantDisplayStatus } from '@/types/Restaurants'
 import { RestaurantActionButtons } from './RestaurantActionButtons'
 import { RestaurantAvatar } from './RestaurantAvatar'
 import { RestaurantStatusBadge } from './RestaurantStatusBadge'

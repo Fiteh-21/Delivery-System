@@ -1,4 +1,4 @@
-import type { RestaurantDisplayStatus } from '@/types/restaurants'
+import type { RestaurantDisplayStatus } from '@/types/Restaurants'
 import { cn } from '@/lib/utils'
 import { RESTAURANT_STATUS_CONFIG } from './restaurantStatusConfig'
 

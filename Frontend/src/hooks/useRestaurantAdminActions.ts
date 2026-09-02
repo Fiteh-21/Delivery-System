@@ -2,7 +2,7 @@ import { useCallback, useMemo, useState } from 'react'
 import { useQueryClient } from '@tanstack/react-query'
 import { toast } from 'sonner'
 import { useApproveRestaurant, useRestaurants } from '@/hooks/useRestaurants'
-import type { Restaurant } from '@/types/restaurants'
+import type { Restaurant } from '@/types/Restaurants'
 import { getRestaurantDisplayStatus } from '@/components/restaurants/restaurantStatusConfig'
 
 const QUERY_KEY = ['restaurants'] as const
