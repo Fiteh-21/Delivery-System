@@ -129,4 +129,76 @@ class ActivityLoggerTest extends TestCase
 
     ActivityLogger::restaurantCreated($request);
 }
+
+public function test_menu_item_created_is_logged(): void
+{
+    Log::shouldReceive('channel')
+        ->once()
+        ->with('activity')
+        ->andReturnSelf();
+
+    Log::shouldReceive('info')
+        ->once()
+        ->with(
+            'Menu item created',
+            \Mockery::on(function (array $data): bool {
+                return $data['action'] === 'menu_item_created';
+            })
+        );
+
+    $request = Request::create(
+        '/api/v1/restaurants/1/menu-items',
+        'POST'
+    );
+
+    ActivityLogger::menuItemCreated($request);
+}
+
+public function test_menu_item_updated_is_logged(): void
+{
+    Log::shouldReceive('channel')
+        ->once()
+        ->with('activity')
+        ->andReturnSelf();
+
+    Log::shouldReceive('info')
+        ->once()
+        ->with(
+            'Menu item updated',
+            \Mockery::on(function (array $data): bool {
+                return $data['action'] === 'menu_item_updated';
+            })
+        );
+
+    $request = Request::create(
+        '/api/v1/menu-items/1',
+        'PUT'
+    );
+
+    ActivityLogger::menuItemUpdated($request);
+}
+
+public function test_menu_item_deleted_is_logged(): void
+{
+    Log::shouldReceive('channel')
+        ->once()
+        ->with('activity')
+        ->andReturnSelf();
+
+    Log::shouldReceive('info')
+        ->once()
+        ->with(
+            'Menu item deleted',
+            \Mockery::on(function (array $data): bool {
+                return $data['action'] === 'menu_item_deleted';
+            })
+        );
+
+    $request = Request::create(
+        '/api/v1/menu-items/1',
+        'DELETE'
+    );
+
+    ActivityLogger::menuItemDeleted($request);
+}
 }
