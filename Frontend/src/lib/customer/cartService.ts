@@ -1,5 +1,6 @@
 import type { CartItem, MenuItem } from '../../types/Customer'
 import api from '../api'
+import { useAuthStore } from '../../stores/auth'
 
 // Since Cart backend endpoints might not be implemented, we define a fallback local storage key
 const LOCAL_CART_KEY = 'tenadam_local_cart'
@@ -37,9 +38,10 @@ export async function addToCart(menuItem: MenuItem, quantity: number = 1): Promi
     if (existing) {
       existing.quantity += quantity
     } else {
+      const customerId = useAuthStore.getState().user?.id ?? 0
       cart.push({
         id: Date.now(),
-        customer_id: 1,
+        customer_id: customerId,
         menu_item_id: menuItem.id,
         quantity,
         menu_item: menuItem,
@@ -49,6 +51,7 @@ export async function addToCart(menuItem: MenuItem, quantity: number = 1): Promi
     return cart
   }
 }
+
 
 export async function updateCartItem(id: number, quantity: number): Promise<CartItem[]> {
   try {

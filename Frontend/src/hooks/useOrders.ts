@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import type { PlaceOrderData } from '@/lib/customer/orderService'
 import { getOrders, getOrder, placeOrder } from '@/lib/customer/orderService'
 
@@ -18,10 +18,13 @@ export function useOrderDetailQuery(id: number) {
 }
 
 export function usePlaceOrderMutation() {
-  return {
-    mutateAsync: async (data: PlaceOrderData) => {
-      return placeOrder(data)
+  const queryClient = useQueryClient()
+
+  return useMutation({
+    mutationFn: (data: PlaceOrderData) => placeOrder(data),
+    onSuccess: () => {
+      // Invalidate orders list so it refetches after a new order is placed
+      queryClient.invalidateQueries({ queryKey: ['orders'] })
     },
-    isPending: false,
-  }
+  })
 }

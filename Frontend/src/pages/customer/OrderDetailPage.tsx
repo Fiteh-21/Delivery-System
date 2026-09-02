@@ -6,9 +6,24 @@ import { Badge } from '@/components/ui/badge'
 export default function OrderDetailPage() {
   const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
-  const orderId = Number(id)
+  const parsedId = Number(id)
+  const orderId = !Number.isNaN(parsedId) && parsedId > 0 ? parsedId : null
 
-  const { data: order, isLoading } = useOrderDetailQuery(orderId)
+  const { data: order, isLoading } = useOrderDetailQuery(orderId ?? 0)
+
+  if (orderId === null) {
+    return (
+      <div className="flex-1 flex flex-col items-center justify-center min-h-screen bg-white px-6">
+        <span className="text-sm text-gray-500 font-bold">Invalid order ID</span>
+        <button
+          onClick={() => navigate(-1)}
+          className="mt-4 px-6 py-2 bg-orange-500 text-white rounded-xl font-bold"
+        >
+          Go Back
+        </button>
+      </div>
+    )
+  }
 
   if (isLoading) {
     return (
@@ -31,6 +46,7 @@ export default function OrderDetailPage() {
       </div>
     )
   }
+
 
   // Build standard timeline mappings
   const timelineSteps = [

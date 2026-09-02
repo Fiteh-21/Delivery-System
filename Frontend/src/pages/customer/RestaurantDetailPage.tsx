@@ -10,13 +10,15 @@ import CategoryChip from '@/components/customer/CategoryChip'
 export default function RestaurantDetailPage() {
   const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
-  const restaurantId = Number(id)
+  const parsedId = Number(id)
+  const restaurantId = !Number.isNaN(parsedId) && parsedId > 0 ? parsedId : null
 
-  const { data: restaurant, isLoading: loadingDetail } = useRestaurantDetailQuery(restaurantId)
-  const { data: menuItems = [], isLoading: loadingMenu } = useRestaurantMenuQuery(restaurantId)
+  const { data: restaurant, isLoading: loadingDetail } = useRestaurantDetailQuery(restaurantId ?? 0)
+  const { data: menuItems = [], isLoading: loadingMenu } = useRestaurantMenuQuery(restaurantId ?? 0)
 
   const { items, addItem, updateQuantity } = useCartStore()
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null)
+
 
   // Grab unique category IDs of present items
   const menuCategories = Array.from(new Set(menuItems.map((item) => item.category_id)))
@@ -32,6 +34,20 @@ export default function RestaurantDetailPage() {
   const displayedItems = selectedCategory
     ? menuItems.filter((item) => item.category_id === selectedCategory)
     : menuItems
+
+  if (restaurantId === null) {
+    return (
+      <div className="flex-1 flex flex-col items-center justify-center min-h-screen bg-white px-6">
+        <span className="text-sm text-gray-500 font-bold">Invalid restaurant ID</span>
+        <button
+          onClick={() => navigate(-1)}
+          className="mt-4 px-6 py-2 bg-orange-500 text-white rounded-xl font-bold"
+        >
+          Go Back
+        </button>
+      </div>
+    )
+  }
 
   if (loadingDetail || loadingMenu) {
     return (
