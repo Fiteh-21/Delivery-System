@@ -2,19 +2,36 @@
 
 namespace App\Models;
 
+use Database\Factories\RestaurantFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * @property int $id
+ * @property int $manager_id
+ * @property string $name
+ * @property string|null $description
+ * @property string $address
+ * @property string $phone
+ * @property string|null $logo
+ * @property string $approval_status
+ * @property string $status
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ */
 class Restaurant extends Model
 {
+    /** @use HasFactory<RestaurantFactory> */
+    use HasFactory;
+
     protected $fillable = [
         'name',
         'description',
         'address',
         'phone',
         'logo',
-
     ];
 
     /**
