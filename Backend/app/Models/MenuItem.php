@@ -6,6 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * @property int $id
+ * @property int $restaurant_id
+ * @property int $category_id
+ * @property string $name
+ * @property string|null $description
+ * @property string $price
+ * @property bool $is_available
+ * @property string|null $image
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property-read Restaurant $restaurant
+ * @property-read Category $category
+ */
 class MenuItem extends Model
 {
     protected $fillable = [

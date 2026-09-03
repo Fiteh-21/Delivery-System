@@ -101,4 +101,31 @@ public static function restaurantDeleted(?Request $request = null): void
         $request
     );
 }
+
+    public static function menuItemCreated(?Request $request = null): void
+    {
+        self::log(
+            'menu_item_created',
+            'Menu item created',
+            $request
+        );
+    }
+
+    public static function menuItemUpdated(?Request $request = null): void
+    {
+        self::log(
+            'menu_item_updated',
+            'Menu item updated',
+            $request
+        );
+    }
+
+    public static function menuItemDeleted(?Request $request = null): void
+    {
+        self::log(
+            'menu_item_deleted',
+            'Menu item deleted',
+            $request
+        );
+    }
 }
