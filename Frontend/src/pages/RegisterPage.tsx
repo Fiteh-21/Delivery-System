@@ -19,6 +19,7 @@ export default function RegisterPage() {
     name: z.string().min(1, t('auth.nameRequired')),
     email: z.string().email('Invalid email address'),
     username: z.string().min(3, 'Username must be at least 3 characters'),
+    phone: z.string().min(1, 'Phone number is required'),
     password: z.string().min(8, t('auth.passwordMin')),
     password_confirmation: z.string(),
   }).refine((data) => data.password === data.password_confirmation, {
@@ -71,6 +72,13 @@ export default function RegisterPage() {
               <Input id="username" placeholder="johndoe" {...register('username')} />
               {errors.username && (
                 <p className="text-sm text-destructive">{errors.username.message}</p>
+              )}
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="phone">Phone number</Label>
+              <Input id="phone" type="tel" placeholder="0912345678" {...register('phone')} />
+              {errors.phone && (
+                <p className="text-sm text-destructive">{errors.phone.message}</p>
               )}
             </div>
             <div className="space-y-2">
