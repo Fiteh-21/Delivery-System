@@ -45,4 +45,4 @@ export interface ApiError {
 }
 
 // Re-export customer types
-export * from './customer'
+export * from './Customer'
